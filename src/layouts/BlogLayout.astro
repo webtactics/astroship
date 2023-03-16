@@ -18,8 +18,8 @@ const { frontmatter } = Astro.props;
         {frontmatter.title}
       </h1>
       <Picture
-      src={blogPostEntry.data.image.src}
-      alt={blogPostEntry.data.image.alt}
+      src={frontmatter.image.src}
+      alt={frontmatter.image.alt}
       sizes="(max-width: 800px) 100vw, 800px"
       widths={[200, 400, 800]}
       aspectRatio="16:9"
@@ -48,7 +48,19 @@ const { frontmatter } = Astro.props;
         </div>
       </div>
     </div>
-
+    <Picture
+    src={frontmatter.image}
+    alt={frontmatter.image.alt}
+    sizes="(max-width: 800px) 100vw, 800px"
+    widths={[200, 400, 800]}
+    aspectRatio="16:9"
+    background="#ffffff"
+    fit="cover"
+    position="center"
+    loading={index <= 2 ? "eager" : "lazy"}
+    decoding={index <= 2 ? "sync" : "async"}
+    class="w-full rounded-md"
+  />
     <div class="mx-auto prose prose-lg mt-6">
       <slot />
     </div>

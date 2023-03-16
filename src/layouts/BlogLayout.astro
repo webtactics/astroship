@@ -17,6 +17,19 @@ const { frontmatter } = Astro.props;
         class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
         {frontmatter.title}
       </h1>
+      <Picture
+      src={blogPostEntry.data.image.src}
+      alt={blogPostEntry.data.image.alt}
+      sizes="(max-width: 800px) 100vw, 800px"
+      widths={[200, 400, 800]}
+      aspectRatio="16:9"
+      background="#ffffff"
+      fit="cover"
+      position="center"
+      loading={index <= 2 ? "eager" : "lazy"}
+      decoding={index <= 2 ? "sync" : "async"}
+      class="w-full rounded-md"
+    />
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
         <span class="text-gray-400">
           {frontmatter.author}
